@@ -9,7 +9,7 @@ function Signup() {
     const [password, setPassword] = useState("");
 
     async function handleSignup() {
-        await fetch("http://localhost:3000/signup", {
+        await fetch("https://collabortivecodeeditor.onrender.com/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

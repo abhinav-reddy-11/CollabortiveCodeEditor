@@ -23,7 +23,7 @@ function App() {
             return;
         }
 
-        const ws = new WebSocket("ws://localhost:3000");
+        const ws = new WebSocket("wss://collabortivecodeeditor.onrender.com");
 
         wsRef.current = ws;
 
