@@ -1,0 +1,94 @@
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0f172a;
+  color:white;
+}
+
+button{
+  padding:10px 16px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#2563eb;
+  color:white;
+  font-weight:600;
+}
+
+button:hover{
+  opacity:0.9;
+}
+
+input, select{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #334155;
+  background:#1e293b;
+  color:white;
+}
+
+.home-container{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.home-card{
+  width:500px;
+  padding:30px;
+  background:#1e293b;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  text-align:center;
+}
+
+.auth-container{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.auth-card{
+  width:350px;
+  padding:30px;
+  background:#1e293b;
+  border-radius:16px;
+}
+
+.editor-header{
+  height:60px;
+  background:#111827;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 20px;
+}
+
+.editor-controls{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.auth-card h1{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.auth-card input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  box-sizing:border-box;
+}
+
+.auth-card button{
+  width:100%;
+  margin-top:10px;
+}
+
+.remote-cursor {
+    border-left: 3px solid red;
+}
