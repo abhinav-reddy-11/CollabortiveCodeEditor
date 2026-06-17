@@ -28,9 +28,7 @@
     
 
     const app = express();
-    app.use(cors({
-    origin: "http://localhost:5173"
-}));
+    app.use(cors());
     app.use(express.json());
 
     function authMiddleware(req, res, next){
@@ -319,12 +317,12 @@ app.get(
     });
     })
 
-    const port = 3000;
+    const port = process.env.PORT || 3000;
 
     app.get("/", (req,res) =>{
         res.send("server running");
     })
 
     server.listen(port,()=>{
-        console.log("listening to port 3000")
+        console.log(`listening to port ${PORT}`)
     });
