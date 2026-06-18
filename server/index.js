@@ -166,17 +166,21 @@ app.get(
 // a connection with the server. The ws parameter represents that individual client connection and can be 
 // used to send messages to or receive messages from that client.    
 
-  function broadcastUserCount(){
-    console.log("Broadcasting:", wss.clients.size);
-    wss.clients.forEach((client)=>{
+ function broadcastUserCount(roomId) {
+
+    const room = rooms.get(roomId);
+
+    if (!room) return;
+
+    room.clients.forEach((client) => {
         client.send(
             JSON.stringify({
-                type:"USER_COUNT",
-                count:wss.clients.size
+                type: "USER_COUNT",
+                count: room.clients.size
             })
         );
     });
-  }
+}
 
   const rooms = new Map();
 
@@ -186,7 +190,7 @@ app.get(
     wss.on("connection", (ws) =>{
         console.log("client connected")
         
-        broadcastUserCount();
+        
         ws.on("message",async (message) =>{
 
         // clients is a property provided by the WebSocketServer
@@ -255,8 +259,10 @@ app.get(
 
              ws.roomId = data.roomId
             
-            const room = rooms.get(data.roomId);
-            room.clients.add(ws);
+           const room = rooms.get(data.roomId);
+room.clients.add(ws);
+
+broadcastUserCount(data.roomId);
             
 
             ws.send(
@@ -307,13 +313,15 @@ app.get(
         const room = rooms.get(ws.roomId);
         room.clients.delete(ws);
 
+        broadcastUserCount(ws.roomId);
+
         if(room.clients.size === 0){
             rooms.delete(ws.roomId);
         }
 
     }
 
-    broadcastUserCount();
+    
     });
     })
 
