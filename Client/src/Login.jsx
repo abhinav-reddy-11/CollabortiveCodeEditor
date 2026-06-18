@@ -8,33 +8,35 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    async function handleLogin() {
-        const response = await fetch(
-            "https://collabortivecodeeditor.onrender.com/login",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    username,
-                    password
-                })
-            }
-        );
+   async function handleLogin() {
+    const response = await fetch(
+        "https://collabortivecodeeditor.onrender.com/login",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        }
+    );
 
-        const data = await response.json();
+    const data = await response.json();
 
-        console.log(data);
-
-        localStorage.setItem(
-            "token",
-            data.token
-        );
-
-        navigate("/");
+    if (!response.ok) {
+        alert(data.message);
+        return;
     }
 
+    localStorage.setItem(
+        "token",
+        data.token
+    );
+
+    navigate("/");
+}
     return (
         <div className="auth-container">
             <div className="auth-card">
