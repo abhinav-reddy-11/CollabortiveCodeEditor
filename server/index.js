@@ -324,5 +324,5 @@ app.get(
     })
 
     server.listen(port,()=>{
-        console.log(`listening to port ${PORT}`)
+        console.log(`listening to port ${port}`)
     });
